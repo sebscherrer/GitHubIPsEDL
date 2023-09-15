@@ -16,7 +16,7 @@ jobs:
       - name: Get GitHub IPs
         run: |
           curl https://api.github.com/meta -o meta.json
-          cat meta.json | jq '.actions' > github_action_ips.txt
+          jq -r '.actions[]' meta.json > github_action_ips.txt
 
       - name: Commit and Push
         run: |
